@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\CachedRepositories\src;
+namespace BrandonJBegle\CachedRepositories;
 
 class BaseObserver
 {

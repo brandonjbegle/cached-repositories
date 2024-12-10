@@ -7,10 +7,6 @@
 
     class CachedRepositoryServiceProvider extends \Illuminate\Support\ServiceProvider
     {
-        // Todo Brandon: Brandon Need to register observers here
-        // Todo Brandon: Have the base observer here to extend from so they can resolve cache
-        // Todo Brandon: Also need to register repositories here
-        // Todo Brandon: Maybe they register the models they have repositories for in the config
         // Todo Brandon: Throw exception if the model doesn't have an observer or something else?
         // Todo Brandon: A switch to disable registering observers in config so they can be registered manually?
 

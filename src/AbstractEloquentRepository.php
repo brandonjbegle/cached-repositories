@@ -2,8 +2,8 @@
 
 namespace BrandonJBegle\CachedRepositories;
 
-use BrandonJBegle\RepositoryException;
-use BrandonJBegle\Contracts\RepositoryInterface;
+use BrandonJBegle\CachedRepositories\RepositoryException;
+use BrandonJBegle\CachedRepositories\Contracts\RepositoryInterface;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 

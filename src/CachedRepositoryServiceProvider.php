@@ -2,7 +2,7 @@
 
     namespace BrandonJBegle\CachedRepositories;
 
-    use BrandonJBegle\Contracts\CacheInterface;
+    use BrandonJBegle\CachedRepositories\Contracts\CacheInterface;
     use ReflectionClass;
 
     class CachedRepositoryServiceProvider extends \Illuminate\Support\ServiceProvider

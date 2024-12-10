@@ -3,6 +3,7 @@
     namespace BrandonJBegle\CachedRepositories;
 
     use BrandonJBegle\CachedRepositories\Contracts\CacheInterface;
+    use BrandonJBegle\CachedRepositories\CacheService\LaravelCache;
     use ReflectionClass;
 
     class CachedRepositoryServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -76,5 +77,12 @@
             $decoratorReflection = new ReflectionClass($decoratorClassName);
 
             return $decoratorReflection->newInstanceArgs($decoratorArgs);
+        }
+
+        protected function registerCacheService(): void
+        {
+            $this->app->bind('App\Services\Contracts\CacheInterface', function ($app) {
+                return new LaravelCache($app['cache'], 60);
+            });
         }
     }

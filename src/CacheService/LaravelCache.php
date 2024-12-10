@@ -1,8 +1,8 @@
 <?php
 
-namespace BrandonJBegle\CacheService;
+namespace BrandonJBegle\CachedRepositories\CacheService;
 
-use BrandonJBegle\Contracts\CacheInterface;
+use BrandonJBegle\CachedRepositories\Contracts\CacheInterface;
 use Illuminate\Cache\CacheManager;
 
 class LaravelCache implements CacheInterface

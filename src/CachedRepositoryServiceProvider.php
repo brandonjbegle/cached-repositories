@@ -13,28 +13,23 @@
         // Todo Brandon: In future, public repositories directory and create the default directories
         // Todo Brandon: Need some stubs, so we we can generate the files with a command
 
-        private $models = [];
-
         public function boot(): void
         {
             if ($this->app->runningInConsole()) {
                 $this->publishes([
-                    __DIR__ . '/../config' => config_path(),
+                    __DIR__.'/../config' => config_path(),
                 ], 'cached-repositories');
             }
 
-            $this->models = config('cached-repositories.models', []);
-            if(count($this->models)){
-                $this->bootObservers($this->models);
-            }
+            $this->bootObservers(config('cached-repositories.models', []));
         }
 
         public function register(): void
         {
-            $this->mergeConfigFrom(__DIR__ . '/../config/cached-repositories.php', 'cached-repositories');
+            $this->mergeConfigFrom(__DIR__.'/../config/cached-repositories.php', 'cached-repositories');
 
             $except = config('cached-repositories.except', []);
-            $models = array_diff($this->models, $except);
+            $models = array_diff(config('cached-repositories.models', []), $except);
 
             $this->registerRepositories($models);
         }

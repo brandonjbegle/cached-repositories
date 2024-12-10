@@ -1,6 +1,6 @@
 <?php
 
-namespace BarndonJBegle\CachedRepositories\Contracts;
+namespace BrandonJBegle\CachedRepositories\Contracts;
 
 interface CacheInterface
 {

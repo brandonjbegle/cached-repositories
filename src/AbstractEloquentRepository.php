@@ -2,9 +2,8 @@
 
 namespace App\Packages\CachedRepositories\src;
 
-// Todo Brandon: Update all of this..
-use App\Exceptions\RepositoryException;
-use App\Repositories\Contracts\RepositoryInterface;
+use BrandonJBegle\RepositoryException;
+use BrandonJBegle\Contracts\RepositoryInterface;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 

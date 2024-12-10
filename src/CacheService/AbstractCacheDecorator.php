@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\CacheService;
+namespace BrandonJBegle\CachedRepositories\CacheService;
 
-use App\Services\Contracts\CacheInterface;
+use BrandonJBegle\CachedRepositories\Contracts\CacheInterface;
 
 abstract class AbstractCacheDecorator
 {

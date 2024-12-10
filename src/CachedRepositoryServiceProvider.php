@@ -1,9 +1,8 @@
 <?php
 
-    namespace App\Packages\CachedRepositories\src;
+    namespace BrandonJBegle\CachedRepositories;
 
-    use App\Services\Contracts\CacheInterface;
-    use Psr\SimpleCache\CacheInterface;
+    use BrandonJBegle\Contracts\CacheInterface;
     use ReflectionClass;
 
     class CachedRepositoryServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -15,16 +14,43 @@
         // Todo Brandon: Throw exception if the model doesn't have an observer or something else?
         // Todo Brandon: A switch to disable registering observers in config so they can be registered manually?
 
+        // Todo Brandon: In future, public repositories directory and create the default directories
+        // Todo Brandon: Need some stubs, so we we can generate the files with a command
+
         private $models = [];
 
         public function boot(): void
         {
+            if ($this->app->runningInConsole()) {
+                $this->publishes([
+                    __DIR__ . '/../config' => config_path(),
+                ], 'cached-repositories');
+            }
 
+            $this->models = config('cached-repositories.models', []);
+            if(count($this->models)){
+                $this->bootObservers(...$this->models);
+            }
         }
 
         public function register(): void
         {
+            $this->mergeConfigFrom(__DIR__ . '/../config/cached-repositories.php', 'cached-repositories');
 
+            $except = config('cached-repositories.except', []);
+            $models = array_diff($this->models, $except);
+
+            $this->registerRepositories($models);
+        }
+
+        private function bootObservers(array $models): void
+        {
+            foreach ($models as $model) {
+                $r = new \ReflectionClass($model);
+                $instance = $r->newInstanceWithoutConstructor();
+                $observer = new \ReflectionClass('App\Observers\\'.$r->getShortName().'Observer');
+                $instance->observe($observer->newInstanceWithoutConstructor());
+            }
         }
 
         private function registerRepositories(array $models): void

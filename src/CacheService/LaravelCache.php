@@ -1,9 +1,8 @@
 <?php
 
-    // Todo Brandon: Update all these namespaces
-namespace App\Services\CacheService;
+namespace BrandonJBegle\CacheService;
 
-use App\Services\Contracts\CacheInterface;
+use BrandonJBegle\Contracts\CacheInterface;
 use Illuminate\Cache\CacheManager;
 
 class LaravelCache implements CacheInterface

@@ -29,6 +29,8 @@
         {
             $this->mergeConfigFrom(__DIR__.'/../config/cached-repositories.php', 'cached-repositories');
 
+            $this->registerCacheService();
+
             $except = config('cached-repositories.except', []);
             $models = array_diff(config('cached-repositories.models', []), $except);
 

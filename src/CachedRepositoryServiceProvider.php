@@ -25,7 +25,7 @@
 
             $this->models = config('cached-repositories.models', []);
             if(count($this->models)){
-                $this->bootObservers(...$this->models);
+                $this->bootObservers($this->models);
             }
         }
 

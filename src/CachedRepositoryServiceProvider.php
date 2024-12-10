@@ -83,7 +83,7 @@
 
         protected function registerCacheService(): void
         {
-            $this->app->bind('App\Services\Contracts\CacheInterface', function ($app) {
+            $this->app->bind(CacheInterface::class, function ($app) {
                 return new LaravelCache($app['cache'], 60);
             });
         }
